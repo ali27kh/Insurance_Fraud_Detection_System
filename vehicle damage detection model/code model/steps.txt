@@ -1,0 +1,27 @@
+1)Copy the folder "dataset_yolov5_damage_vehicle" to your drive.
+2)create new colab file (.ipynb)
+3)change execution environment to GPU.
+4)write this code:
+********************************
+from google.colab import drive
+drive.mount('/content/drive')
+
+!git clone https://github.com/ultralytics/yolov5.git
+
+%cd yolov5
+
+!pip install -r requirements.txt
+
+!python train.py --img 416 --batch 16 --epochs 50 --data dataset.yaml --weights yolov5s.pt --cache --name 1st_train --project /content/drive/MyDrive/YOLOv5_model_damage_vehicle
+**********************************
+
+5)you can test your model by writing this command:
+!python detect.py --weights /content/drive/MyDrive/YOLOv5_model_damage_vehicle/1st_train4/weights/best.pt --img 416 --conf 0.25 --source /content/drive/MyDrive/test5.jpg
+
+or 
+
+download the file 1st_train and test your model in your PC (open "yolov5_damage_vehicle_test.ipynb")
+
+
+
+you must add "libomp140.x86_64_x86-64.dll" to your windows system.
